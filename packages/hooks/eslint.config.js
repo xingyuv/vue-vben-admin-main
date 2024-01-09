@@ -1,9 +1,10 @@
-import { defineConfig, prettier, vue } from '@vben/eslint-config';
+import { defineFlatConfig, strict, prettier, vue } from '@vben/eslint-config';
 
-export default defineConfig([
+export default defineFlatConfig([
   ...prettier,
   ...vue,
+  ...strict,
   {
     ignores: ['dist', 'lib', 'types', 'test'],
   },
-])
+]);

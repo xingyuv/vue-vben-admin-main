@@ -1,12 +1,12 @@
-import vueParser from 'vue-eslint-parser'
-import vuePlugin from 'eslint-plugin-vue'
-import { typescript, tsParser, tsPlugin } from './typescript'
-import { GLOB_EXCLUDE, GLOB_VUE } from './constants'
-import type { FlatESLintConfig, Rules } from 'eslint-define-config'
+import vueParser from 'vue-eslint-parser';
+import vuePlugin from 'eslint-plugin-vue';
+import { typescript, tsParser, tsPlugin } from './typescript';
+import { GLOB_EXCLUDE, GLOB_VUE } from './constants';
+import type { FlatESLintConfigItem, Rules } from 'eslint-define-config';
 
-export { vueParser, vuePlugin }
+export { vueParser, vuePlugin };
 
-export const reactivityTransform: FlatESLintConfig[] = [
+export const reactivityTransform: FlatESLintConfigItem[] = [
   {
     languageOptions: {
       globals: {
@@ -26,62 +26,45 @@ export const reactivityTransform: FlatESLintConfig[] = [
       'vue/no-setup-props-destructure': 'off',
     },
   },
-]
+];
 
 const vueCustomRules: Rules = {
-  ...vuePlugin.configs.base.rules,
-  ...vuePlugin.configs["vue3-recommended"].rules,
+  'vue/script-setup-uses-vars': 'error',
+  'vue/no-reserved-component-names': 'off',
+  'vue/custom-event-name-casing': 'off',
+  'vue/attributes-order': 'off',
+  'vue/one-component-per-file': 'off',
+  'vue/html-closing-bracket-newline': 'off',
   'vue/max-attributes-per-line': 'off',
-  'vue/no-v-html': 'off',
-  'vue/multi-word-component-names': 'off',
-  'vue/require-prop-types': 'off',
+  'vue/multiline-html-element-content-newline': 'off',
+  'vue/singleline-html-element-content-newline': 'off',
+  'vue/attribute-hyphenation': 'off',
   'vue/require-default-prop': 'off',
-
+  'vue/require-explicit-emits': 'off',
   'vue/html-self-closing': [
     'error',
     {
       html: {
         void: 'always',
-        normal: 'always',
+        normal: 'never',
         component: 'always',
       },
       svg: 'always',
       math: 'always',
     },
   ],
-  'vue/component-tags-order': [
-    'off',
-    { order: ['script', 'template', 'style'] },
-  ],
-  'vue/custom-event-name-casing': ['error', 'camelCase'],
-  'vue/no-useless-v-bind': 'error',
-  'vue/no-unused-refs': 'error',
-  'vue/padding-line-between-blocks': ['error', 'always'],
-
-  'vue/prefer-template': 'error',
-  'vue/eqeqeq': ['error', 'smart'],
-  'vue/no-constant-condition': 'warn',
-  'vue/object-shorthand': [
-    'error',
-    'always',
-    {
-      ignoreConstructors: false,
-      avoidQuotes: true,
-    },
-  ],
-  'vue/no-loss-of-precision': 'error',
-  'vue/no-empty-pattern': 'error',
-}
+  'vue/multi-word-component-names': 'off',
+};
 
 const vue3Rules: Rules = {
   ...vuePlugin.configs.base.rules,
   ...vuePlugin.configs['vue3-essential'].rules,
   ...vuePlugin.configs['vue3-strongly-recommended'].rules,
   ...vuePlugin.configs['vue3-recommended'].rules,
-}
+};
 
 function getVueConfig(vueVersionRules: Rules) {
-  const vueRules: FlatESLintConfig[] = [
+  const vueRules: FlatESLintConfigItem[] = [
     {
       files: [GLOB_VUE],
       plugins: {
@@ -89,13 +72,15 @@ function getVueConfig(vueVersionRules: Rules) {
         '@typescript-eslint': tsPlugin,
       },
       languageOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
+        ecmaVersion: 'latest',
         parser: vueParser,
         parserOptions: {
           parser: tsParser,
+          ecmaVersion: 2020,
           sourceType: 'module',
+          jsxPragma: 'React',
           project: './tsconfig.*?.json',
+          createDefaultProgram: false,
           extraFileExtensions: ['.vue'],
           ecmaFeatures: {
             jsx: true,
@@ -119,9 +104,9 @@ function getVueConfig(vueVersionRules: Rules) {
       ignores: [...GLOB_EXCLUDE],
     },
     ...reactivityTransform,
-  ]
+  ];
 
-  return vueRules
+  return vueRules;
 }
 
-export const vue = getVueConfig(vue3Rules)
+export const vue = getVueConfig(vue3Rules);

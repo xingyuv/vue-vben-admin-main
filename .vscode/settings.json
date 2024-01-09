@@ -148,6 +148,8 @@
     "vueuse",
     "zxcvbn"
   ],
+  // 解决 eslint 报错问题
+  "eslint.experimental.useFlatConfig": true,
   // 控制相关文件嵌套展示
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
@@ -160,5 +162,6 @@
     "eslint.config.js": ".eslintignore,.prettierignore,.stylelintignore,commitlint.config.js,prettier.config.js,stylelint.config.js"
   },
   "terminal.integrated.scrollback": 10000,
-  "nuxt.isNuxtApp": false
+  "nuxt.isNuxtApp": false,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
