@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
 
 const scopes = fs
   .readdirSync(path.resolve(__dirname, 'src'), { withFileTypes: true })
@@ -18,7 +18,7 @@ const scopeComplete = execSync('git status --porcelain || true')
   ?.replace(/s$/, '');
 
 /** @type {import('cz-git').UserConfig} */
-export default {
+module.exports = {
   ignores: [(commit) => commit.includes('init')],
   extends: ['@commitlint/config-conventional'],
   rules: {

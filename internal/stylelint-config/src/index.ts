@@ -1,3 +1,5 @@
+import type { Config } from 'stylelint';
+
 export default {
   extends: ['stylelint-config-standard', 'stylelint-config-property-sort-order-smacss'],
   plugins: ['stylelint-order', 'stylelint-prettier'],
@@ -89,4 +91,4 @@ export default {
     ],
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
-};
+} as Config;

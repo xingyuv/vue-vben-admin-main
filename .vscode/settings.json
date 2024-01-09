@@ -159,7 +159,7 @@
     "*.env": "$(capture).env.*",
     "CHANGELOG.md": "CHANGELOG*",
     "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml,LICENSE,.gitattributes,.gitignore,.gitpod.yml,CNAME,README*,.npmrc,.browserslistrc",
-    "eslint.config.js": ".eslintignore,.prettierignore,.stylelintignore,commitlint.config.js,prettier.config.js,stylelint.config.js"
+    "eslint.config.js": ".eslintignore,.prettierignore,.stylelintignore,commitlint.config.*,prettier.config.*,stylelint.config.*"
   },
   "terminal.integrated.scrollback": 10000,
   "nuxt.isNuxtApp": false,
