@@ -12,7 +12,6 @@
     "directory": "internal/ts-config"
   },
   "license": "MIT",
-  "type": "module",
   "files": [
     "base.json",
     "node.json",

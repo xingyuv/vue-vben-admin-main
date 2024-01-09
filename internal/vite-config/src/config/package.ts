@@ -21,7 +21,7 @@ function definePackageConfig(defineOptions: DefineOptions = {}) {
         lib: {
           entry: 'src/index.ts',
           formats: ['es'],
-          fileName: () => 'index.mjs',
+          fileName: () => 'index.js',
         },
         rollupOptions: {
           external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],

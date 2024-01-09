@@ -1,7 +1,7 @@
-const { name } = require('./package.json');
-const path = require('path');
+import { name } from './package.json';
+import path from 'path';
 
-module.exports = {
+export default {
   apps: [
     {
       name,
