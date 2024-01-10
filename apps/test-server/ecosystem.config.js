@@ -1,12 +1,13 @@
 import { name } from './package.json';
-import path from 'path';
+import { resolve } from 'node:path';
+import { os } from 'node:os';
 
 export default {
   apps: [
     {
       name,
-      script: path.resolve(__dirname, './dist/index.js'),
-      instances: require('os').cpus().length,
+      script: resolve(__dirname, './dist/index.js'),
+      instances: os.cpus().length,
       autorestart: true,
       watch: true,
       env_production: {

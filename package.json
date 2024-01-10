@@ -112,8 +112,6 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.4",
-    "@commitlint/config-conventional": "^18.4.4",
     "@iconify/json": "^2.2.164",
     "@purge-icons/generated": "^0.10.0",
     "@types/codemirror": "^5.60.15",
@@ -125,6 +123,7 @@
     "@types/qs": "^6.9.11",
     "@types/showdown": "^2.0.6",
     "@types/sortablejs": "^1.15.7",
+    "@vben/commitlint-config": "workspace:*",
     "@vben/eslint-config": "workspace:*",
     "@vben/stylelint-config": "workspace:*",
     "@vben/ts-config": "workspace:*",
@@ -133,8 +132,6 @@
     "@vue/compiler-sfc": "^3.4.5",
     "@vue/test-utils": "^2.4.3",
     "cross-env": "^7.0.3",
-    "cz-git": "^1.8.0",
-    "czg": "^1.8.0",
     "husky": "^8.0.3",
     "lint-staged": "15.2.0",
     "prettier": "^3.1.1",
