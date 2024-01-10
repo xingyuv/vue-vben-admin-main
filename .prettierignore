@@ -2,6 +2,11 @@ dist
 .local
 .output.js
 node_modules
+.browserslistrc
+.github
+.husky
+.vscode
+CHANGELOG.*
 
 **/*.svg
 **/*.sh
